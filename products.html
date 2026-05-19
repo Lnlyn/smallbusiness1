@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products - PandanCraft</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>PandanCraft</h1>
+  <div class="top-icons">
+    <input type="text" id="searchBox" placeholder="Search products...">
+    <button onclick="searchProduct()">🔍</button>
+    <a href="cart.html">🛒</a>
+    <a href="profile.html" id="userIcon">👤</a>
+  </div>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="cart.html">Cart</a>
+  <a href="checkout.html">Checkout</a>
+  <a href="index.html">Logout</a>
+</nav>
+
+<!-- Product Grid -->
+<div id="product-grid" class="grid">
+
+  <div class="product-card">
+    <a href="a.html"><img src="assets/images/product/a.jpg" alt="Tampi Hat"></a>
+    <h3>Tampi Hat</h3>
+    <p>Wide-brim handcrafted straw hat designed for maximum sun protection.</p>
+    <span>₱500</span>
+    <button onclick="addToCart('Tampi Hat', 500, 'assets/images/product/Tampi Hat.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="b.html"><img src="assets/images/product/b.jpg" alt="Tampi Round"></a>
+    <h3>Tampi Round</h3>
+    <p>Colorful woven tote bag, durable and perfect for everyday errands..</p>
+    <span>₱350</span>
+    <button onclick="addToCart('Tampi Round', 350, 'assets/images/product/Tampi Round.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="c.html"><img src="assets/images/product/c.jpg" alt="Woven Big Basket"></a>
+    <h3>Woven Big Basket</h3>
+    <p>Traditional handwoven mat made from sustainable materials.</p>
+    <span>₱400</span>
+    <button onclick="addToCart('Woven Big Basket', 400, 'assets/images/product/Woven Big Basket.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="d.html"><img src="assets/images/product/d.jpg" alt="Handwoven Basket"></a>
+    <h3>Handwoven Basket</h3>
+    <p>Set of eco-friendly woven bags, ideal for shopping and daily use.</p>
+    <span>₱300</span>
+    <button onclick="addToCart('Handwoven Basket', 300, 'assets/images/product/Handwoven Basket.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="e.html"><img src="assets/images/product/e.jpg" alt="Cushion"></a>
+    <h3>Cushion</h3>
+    <p>Lightweight handmade fan crafted for cooling comfort in hot weather.</p>
+    <span>₱150</span>
+    <button onclick="addToCart('Cushion', 150, 'assets/images/product/Cushion.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="f.html"><img src="assets/images/product/f.jpg" alt="Classy Bag"></a>
+    <h3>Classy Bag</h3>
+    <p>Elegant handcrafted wallets made from sustainable nipa materials.</p>
+    <span>₱250</span>
+    <button onclick="addToCart('Classy Bag', 250, 'assets/images/product/Classy Bag.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="g.html"><img src="assets/images/product/g.jpg" alt="Small Handwoven Pandan Basket"></a>
+    <h3>Small Handwoven Pandan Basket</h3>
+    <p>Vibrant handcrafted fans made from eco-friendly woven materials..</p>
+    <span>₱150</span>
+    <button onclick="addToCart('Small Handwoven Pandan Basket', 150, 'assets/images/product/Small Handwoven Pandan Basket.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="h.html"><img src="assets/images/product/h.jpg" alt="Pandan Handbag"></a>
+    <h3>Pandan Handbag</h3>
+    <p>Durable woven tote bag perfect for everyday use and shopping.</p>
+    <span>₱350</span>
+    <button onclick="addToCart('Pandan Handbag', 350, 'assets/images/product/Pandan Handbag.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="i.html"><img src="assets/images/product/i.jpg" alt="Decorative woven basket"></a>
+    <h3>Decorative woven basket</h3>
+    <p>Colorful handcrafted bag inspired by festive Filipino patterns.</p>
+    <span>₱250</span>
+    <button onclick="addToCart('Decorative woven basket', 250, 'assets/images/product/Decorative woven basket.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="j.html"><img src="assets/images/product/j.jpg" alt="Small Pandan Box"></a>
+    <h3>Small Pandan Box</h3>
+    <p>Elegant woven tote with bold dark handles and geometric designs.</p>
+    <span>₱270</span>
+    <button onclick="addToCart('Small Pandan Box', 270, 'assets/images/product/Small Pandan Box.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="k.html"><img src="assets/images/product/k.jpg" alt="Pandan Handbag"></a>
+    <h3>Pandan Handbag</h3>
+    <p>Lightweight pastel-colored tote ideal for casual outings.</p>
+    <span>₱220</span>
+    <button onclick="addToCart('Pandan Handbag', 220, 'assets/images/product/Pandan Handbag.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="l.html"><img src="assets/images/product/l.jpg" alt="Small pandan box with handle"></a>
+    <h3>Small pandan box with handle</h3>
+    <p>Stylish green woven bag with a modern checkered pattern.</p>
+    <span>₱350</span>
+    <button onclick="addToCart('Small pandan box with handle', 350, 'assets/images/product/Small pandan box with handle.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="m.html"><img src="assets/images/product/m.jpg" alt="Tampi Small Hat"></a>
+    <h3>Tampi Small Hat</h3>
+    <p>Spacious eco-friendly tote with a sleek green woven finish.</p>
+    <span>₱300</span>
+    <button onclick="addToCart('Tampi Small Hat', 300, 'assets/images/product/Tampi Small Hat.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="n.html"><img src="assets/images/product/n.jpg" alt="Sambalilo Hat"></a>
+    <h3>Sambalilo Hat</h3>
+    <p>Compact woven storage box for organizing small items.</p>
+    <span>₱32</span>
+    <button onclick="addToCart('Sambalilo Hat', 32, 'assets/images/product/Sambalilo Hat.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="o.html"><img src="assets/images/product/o.jpg" alt="Woven Gift Box"></a>
+    <h3>Woven Gift Box</h3>
+    <p>Handcrafted box with lid, perfect for home organization..</p>
+    <span>₱150</span>
+    <button onclick="addToCart('Woven Gift Box', 150, 'assets/images/product/Woven Gift Box.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="p.html"><img src="assets/images/product/p.jpg" alt="Big Pandan Bag"></a>
+    <h3>Big Pandan Bag</h3>
+    <p>Wide-brimmed straw hat for sun protection and style.</p>
+    <span>₱220</span>
+    <button onclick="addToCart('Big Pandan Bag', 220, 'assets/images/product/Big Pandan Bag.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+  <a href="q.html">
+    <img src="assets/images/product/q.jpg" alt="Pandan Mat">
+  </a>
+  <h3>Pandan Mat</h3>
+  <p>Colorful straw hat designed for a vibrant summer look.</p>
+  <span>₱250</span>
+  <button onclick="addToCart('Pandan Mat', 250, 'assets/images/product/Pandan Mat.jpg')">Add to Cart</button>
+</div>
+
+ <div class="product-card">
+    <a href="r.html"><img src="assets/images/product/r.jpg" alt="Woven Tray"></a>
+    <h3>Woven Tray</h3>
+    <p>Simple and elegant straw hat for everyday outdoor wear</p>
+    <span>₱200</span>
+    <button onclick="addToCart('Woven Tray', 200, 'assets/images/product/Woven Tray Basket.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="s.html"><img src="assets/images/product/s.jpg" alt="Pandan mini box"></a>
+    <h3>Pandan mini box</h3>
+    <p>Lightweight and breathable pandan hat, perfect for sunny days.</p>
+    <span>₱199</span>
+    <button onclick="addToCart('Pandan mini box', 199, 'assets/images/product/Pandan mini box.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="t.html"><img src="assets/images/product/t.jpg" alt="Pandan Wallet"></a>
+    <h3>Pandan Wallet</h3>
+    <p>Durable handwoven pandan hat with a simple, stylish look.</p>
+    <span>₱219</span>
+    <button onclick="addToCart('Pandan Wallet', 219, 'assets/images/product/Pandan Wallet.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="u.html"><img src="assets/images/product/u.jpg" alt="flap woven bag"></a>
+    <h3>flap woven bag</h3>
+    <p>Elegant wide-brim hat that offers extra sun protection.</p>
+    <span>₱156</span>
+    <button onclick="addToCart('flap woven bag', 156, 'assets/images/product/flap woven bag.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="v.html"><img src="assets/images/product/v.jpg" alt="Tampipi Box"></a>
+    <h3>Tampipi Box</h3>
+    <p>Compact handwoven fan, easy to carry anywhere.</p>
+    <span>₱159</span>
+    <button onclick="addToCart('Tampipi Box', 159, 'assets/images/product/Tampipi Box.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="w.html"><img src="assets/images/product/w.jpg" alt="Woven Gift Boxes"></a>
+    <h3>Woven Gift Boxes</h3>
+    <p>Traditional pandan fan that is durable and refreshing to use.</p>
+    <span>₱139</span>
+    <button onclick="addToCart('Woven Gift Boxes', 139, 'assets/images/product/Woven Gift Boxes.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="x.html"><img src="assets/images/product/x.jpg" alt="Classy Bag"></a>
+    <h3>Classy Bag</h3>
+    <p>Colorful handwoven fan that adds a fun and vibrant touch.</p>
+    <span>₱149</span>
+    <button onclick="addToCart('Classy Bag', 149, 'assets/images/product/Classy Bag.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="y.html"><img src="assets/images/product/y.jpg" alt="Woven Tote Bag"></a>
+    <h3>Woven Tote Bag</h3>
+    <p>Eco-friendly tissue holder with a clean, natural look.</p>
+    <span>₱269</span>
+    <button onclick="addToCart('Woven Tote Bag', 269, 'assets/images/product/Woven Tote Bag.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <a href="z.html"><img src="assets/images/product/z.jpg" alt="Cushion"></a>
+    <h3>Cushion</h3>
+    <p>Handwoven pandan mat with vibrant colors, perfect for sleeping or lounging.</p>
+    <span>₱259</span>
+    <button onclick="addToCart('Cushion', 259, 'assets/images/product/Cushion.jpg')">Add to Cart</button>
+  </div><!-- ✅ isara bago mag next product -->
+
+  <!-- ... lahat ng iba pang product-card dito ... -->
+
+</div> <!-- ✅ End of product-grid -->
+
+<!-- Search Script -->
+<script>
+  function searchProduct() {
+    const query = document.getElementById("searchBox").value.toLowerCase();
+    const cards = document.querySelectorAll(".product-card");
+    cards.forEach(card => {
+      const name = card.querySelector("h3").textContent.toLowerCase();
+      card.style.display = name.includes(query) ? "block" : "none";
+    });
+  }
+
+  function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: name, price: price, image: image, qty: 1 });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "checkout.html";
+  }
+</script>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Customer Service</h4>
+      <ul>
+        <li><a href="#">Help Centre</a></li>
+        <li><a href="#">Order Tracking</a></li>
+        <li><a href="#">Return & Refund</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>About Pandan Craft</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Payment</h4>
+      <ul>
+        <li>GCash</li>
+        <li>Maya</li>
+        <li>Bank Transfer</li>
+        <li>Visa / Mastercard</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Logistics</h4>
+      <ul>
+        <li>LBC</li>
+        <li>J&T Express</li>
+        <li>Ninja Van</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><img src="assets/images/product/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/images/product/instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="assets/images/product/tiktok.svg" alt="TikTok"></a>
+        <a href="#"><img src="assets/images/product/youtube.svg" alt="YouTube"></a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h4>Stay Connected</h4>
+      <form>
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Pandan Craft. All Rights Reserved.</p>
+    <p class="eco-deals"><a href="#">Daily Eco Deals</a></p>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+
+<script>
+function addToCart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Check kung existing na sa cart
+  let existing = cart.find(item => item.name === name);
+  if (existing) {
+    existing.qty += 1; // dagdagan lang quantity
+  } else {
+    cart.push({ name: name, price: price, image: image, qty: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.href = "checkout.html"; // pupunta sa checkout page
+}
+</script>
+</body>
+</html>

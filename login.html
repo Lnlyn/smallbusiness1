@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      background-image: url("login_background/bg.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-container {
+      width: 320px;
+      margin: 100px auto;
+      background-color: rgba(0, 128, 0, 0.8);
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    .login-container input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .login-container button {
+      width: 95%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .login-btn { background-color: #006400; color: white; }
+    .google-btn { background-color: #db4437; color: white; }
+    .facebook-btn { background-color: #3b5998; color: white; }
+
+    .login-container button:hover {
+      opacity: 0.9;
+    }
+
+    .signup-text {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .signup-text a {
+      color: #00ff99;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button class="login-btn" onclick="loginUser()">Login</button>
+    <button class="google-btn" onclick="loginWithGoogle()">Continue with Google</button>
+    <button class="facebook-btn" onclick="loginWithFacebook()">Continue with Facebook</button>
+
+    <div class="signup-text">
+      Don’t have an account? <a href="signup.html">Create Account</a>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
+  <script>
+    function loginUser() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Login successful!");
+          window.location.href = "home.html";
+        })
+        .catch(error => alert(error.message));
+    }
+function loginWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(() => window.location.href = "home.html")
+    .catch(error => alert(error.message));
+}
+
+    function loginWithFacebook() {
+      const provider = new firebase.auth.FacebookAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(() => window.location.href = "home.html")
+        .catch(error => alert(error.message));
+    }
+  </script>
+</body>
+</html>

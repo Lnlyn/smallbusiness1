@@ -1,0 +1,8 @@
+<div id="order-summary"></div>
+<button>Confirm Order</button>
+
+<script>
+  const orderData = JSON.parse(localStorage.getItem("orderData"));
+  document.getElementById("order-summary").innerText =
+    `${orderData.item} x${orderData.qty} = ₱${orderData.price}`;
+</script>

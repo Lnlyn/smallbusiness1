@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<style>
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffe9d6;
+  color: #333;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 220px;
+  background: #1f3c88;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  position: fixed;
+  height: 100%;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 20px;
+  display: block;
+  transition: 0.2s;
+}
+
+.sidebar a:hover {
+  background: #162d66;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  margin-left: 220px;
+  padding: 25px;
+  width: calc(100% - 220px);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border: 1px solid #d1d5db;
+  margin-bottom: 20px;
+}
+
+/* ===== HEADINGS ===== */
+h1, h2 {
+  color: #1f3c88;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* ===== INPUTS ===== */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+input[type="password"],
+select {
+  width: calc(25% - 12px);
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #c0c4c8;
+  background: #fdf6f1;
+  font-size: 14px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  padding: 10px 18px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.add-btn {
+  background: #1f3c88;
+  color: white;
+}
+
+/* ===== TABLES ===== */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: #fdf0e8;
+}
+
+/* ===== PROFILE ===== */
+.profile-box {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #fdf6f1;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar">
+  <h2>Admin Panel</h2>
+  <a href="#" onclick="showSection('dashboard')">Dashboard</a>
+  <a href="#" onclick="showSection('products')">Product Management</a>
+  <a href="#" onclick="showSection('orders')">Order Management</a>
+  <a href="#" onclick="showSection('profile')">Profile</a>
+  <!-- Logout button sa sidebar -->
+  <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="container section">
+    <h1>Dashboard</h1>
+    <p>Welcome to the Admin Panel. Overview and stats will appear here.</p>
+  </div>
+
+  <!-- PRODUCT MANAGEMENT -->
+  <div id="products" class="container section" style="display:none">
+    <h1>Product Management</h1>
+
+    <input type="text" id="productName" placeholder="Product Name">
+    <input type="number" id="productPrice" placeholder="Price">
+    <input type="text" id="productDesc" placeholder="Description">
+    <input type="file" id="productImage">
+    <button class="add-btn" onclick="addProduct()">Add Product</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="productTable"></tbody>
+    </table>
+  </div>
+
+  <!-- ORDER MANAGEMENT -->
+  <div id="orders" class="container section" style="display:none">
+    <h1>Order Management</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Status</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody id="orderTable"></tbody>
+    </table>
+  </div>
+
+  <!-- PROFILE -->
+  <div id="profile" class="container section" style="display:none">
+    <h1>Admin Profile</h1>
+    <div class="profile-box">
+      <input type="text" id="adminName" placeholder="Name">
+      <input type="text" id="adminEmail" placeholder="Email">
+      <input type="password" id="adminPassword" placeholder="Password">
+      <br>
+      <button class="add-btn" onclick="saveProfile()">Save Profile</button>
+
+      <p><b>Name:</b> <span id="displayName">-</span></p>
+      <p><b>Email:</b> <span id="displayEmail">-</span></p>
+      <p><b>Password:</b> <span id="displayPassword">-</span></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ===== SHOW SECTION =====
+function showSection(id) {
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(sec => sec.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+
+// ===== PROFILE =====
+function saveProfile() {
+  const name = adminName.value;
+  const email = adminEmail.value;
+  const password = adminPassword.value;
+
+  localStorage.setItem("admin", JSON.stringify({ name, email, password }));
+  displayProfile();
+}
+
+function displayProfile() {
+  const admin = JSON.parse(localStorage.getItem("admin")) || {};
+  displayName.textContent = admin.name || "-";
+  displayEmail.textContent = admin.email || "-";
+  displayPassword.textContent = admin.password || "-";
+}
+
+// ===== PRODUCTS =====
+let products = [];
+let editIndex = -1;
+
+function addProduct() {
+  const name = productName.value.trim();
+  const price = productPrice.value.trim();
+  const desc = productDesc.value.trim();
+  const file = productImage.files[0];
+
+  if (!name || !price || !desc) { alert("Fill all fields!"); return; }
+
+  const product = { name, price, desc, image: file ? URL.createObjectURL(file) : "" };
+
+  if (editIndex === -1) { products.push(product); } 
+  else { products[editIndex] = product; editIndex = -1; }
+
+  clearInputs();
+  displayProducts();
+}
+
+function displayProducts() {
+  productTable.innerHTML = "";
+  products.forEach((p, i) => {
+    productTable.innerHTML += `
+      <tr>
+        <td>${p.name}</td>
+        <td>₱${p.price}</td>
+        <td>${p.desc}</td>
+        <td>${p.image ? `<img src="${p.image}" width="50">` : ""}</td>
+        <td>
+          <button onclick="editProduct(${i})">Edit</button>
+          <button onclick="deleteProduct(${i})">Delete</button>
+        </td>
+      </tr>`;
+  });
+}
+
+function editProduct(i) {
+  const p = products[i];
+  productName.value = p.name;
+  productPrice.value = p.price;
+  productDesc.value = p.desc;
+  editIndex = i;
+}
+
+function deleteProduct(i) {
+  if (confirm("Delete this product?")) { products.splice(i, 1); displayProducts(); }
+}
+
+function clearInputs() { productName.value = ""; productPrice.value = ""; productDesc.value = ""; productImage.value = ""; }
+
+// ===== ORDERS =====
+let orders = [];
+function displayOrders() { orderTable.innerHTML = ""; }
+
+// ===== CUSTOMERS =====
+let customers = [];
+function displayCustomers() { customerTable.innerHTML = ""; }
+
+// ===== SALES =====
+function calculateSales() { if(window.totalSales) totalSales.textContent = orders.length * 150; }
+
+// ===== LOGOUT FUNCTION =====
+function logout() {
+  alert("You clicked logout!");
+  // Optional: clear admin data and redirect to login
+  // localStorage.removeItem("admin");
+  // window.location.href = "login.html";
+}
+
+// ===== INIT =====
+displayProfile();
+displayProducts();
+displayOrders();
+displayCustomers();
+calculateSales();
+</script>
+
+</body>
+</html>

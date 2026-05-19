@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nipa Storage Box - PandanCraft</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>PandanCraft</h1>
+    <div class="top-icons">
+      <a href="home.html">🏠</a>
+      <a href="cart.html">🛒</a>
+      <a href="#">👤</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="index.html">Logout</a>
+  </nav>
+
+  <div class="product-detail">
+    <img src="assets/images/product/v.jpg" alt="Tampipi Box">
+    <h2>Tampipi Box</h2>
+    <p>Elegant wide-brim hat that offers extra sun protection.</p>
+    <span>₱199</span>
+
+    <!-- Add to Cart button -->
+    <button onclick="addToCart('Tampipi Box', 199, 'assets/images/product/v.jpg')">
+      Add to Cart
+    </button>
+
+    <!-- Checkout button -->
+    <button onclick="goToCheckout()">
+      Checkout
+    </button>
+  </div>
+
+  <!-- Link to script.js -->
+  <script src="script.js"></script>
+
+  <!-- Inline script for checkout redirect -->
+  <script>
+    function goToCheckout() {
+      window.location.href = "checkout.html";
+    }
+  </script>
+</body>
+</html>

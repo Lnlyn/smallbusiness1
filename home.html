@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Home - PandanCraft</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<script type="module">
+  import { auth } from "./firebase-config.js";
+  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  onAuthStateChanged(auth, (user) => {
+    const userIcon = document.getElementById("userIcon");
+    if (user) {
+      // May naka-login, ipakita ang user icon
+      userIcon.style.display = "inline-block";
+    } else {
+      // Walang naka-login, itago ang user icon
+      userIcon.style.display = "none";
+    }
+  });
+</script>
+
+
+<body>
+  <!-- Header -->
+ <header>
+  <h1>PandanCraft</h1>
+  <div class="top-icons">
+    <input type="text" id="searchBox" placeholder="Search products...">
+    <button onclick="searchProduct()">🔍</button>
+    <a href="cart.html">🛒</a>
+    <!-- 👤 User icon na papunta sa profile -->
+    <a href="profile.html" id="userIcon">👤</a>
+  </div>
+</header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PandanCraft - Home</title>
+  <!-- Dito mo ililink ang tamang filename -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PandanCraft</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+
+ <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Handcrafted with Love, Inspired by Nature</h1>
+      <a href="products.html" class="btn">Shop Now</a>
+    </div>
+  </section>
+
+</body>
+</html>
+
+<!-- Best Seller Products Section -->
+<section class="best-sellers">
+  <h2>Best Seller Products</h2>
+  <div class="product-container">
+    <div class="product-card">
+      <img src="assets/images/n.jpg" alt="Sambalilo Hat">
+      <h3>Sambalilo Hat</h3>
+      <p>₱850 - Handwoven pandan bag</p>
+    </div>
+
+    <div class="product-card">
+      <img src="assets/images/d.jpg" alt="Handwoven basket">
+      <h3>Handwoven Basket</h3> 
+      <p>₱650 - Eco-friendly storage</p>
+    </div>
+
+    <div class="product-card">
+      <img src="assets/images/v.jpg" alt="Tampipi Box">
+      <h3>Tampipi Box</h3>
+      <p>₱500 - Crafted with care</p>
+    </div>
+  </div>
+</section>
+
+
+</div></section>
+<!-- BOTTOM SECTIONS -->
+<section class="bottom-sections">
+<div class="box about-us"><h2>About Us</h2><p>We create eco-friendly handmade products inspired by Filipino culture.</p></div>
+<div class="box why-choose-us"><h2>Why Choose Us</h2>
+<div class="reason">
+  🌿 Eco-Friendly
+</div>
+
+<div class="reason">
+  🧵 Handmade
+</div>
+
+<div class="reason">
+  💗 Supports Local Communities
+</div>
+
+
+
+
+
+
+</div>
+<div class="box testimonials"><h2>Testimonials</h2><p>"Super ganda at matibay!"</p><span>— Maria S.</span></div>
+<div class="box footer"><h2>Contact Us</h2>
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+<a href="#">Email</a>
+
+<p>© 2026 PandanCraft</p>
+
+
+
+
+</div>
+</section>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+  <h2>Welcome to PandanCraft!</h2>
+  <button onclick="logoutUser()">Logout</button>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
+  <script>
+    function logoutUser() {
+      auth.signOut().then(() => {
+        alert("Logged out!");
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+</body>
+</html>

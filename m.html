@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Eco Bag - My E-Commerce Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>My E-Commerce Website</h1>
+    <div class="top-icons">
+      <a href="home.html">🏠</a>
+      <a href="cart.html">🛒</a>
+      <a href="#">👤</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="index.html">Logout</a>
+  </nav>
+
+  <div class="product-detail">
+    <img src="assets/images/product/m.jpg" alt="Tampi Small Hat">
+    <h2>Tampi Small Hat</h2>
+    <p>Small handcrafted table with woven pandan surface and sturdy wooden frame.</p>
+    <span>₱950</span>
+
+    <!-- Add to Cart button -->
+    <button onclick="addToCart('Tampi Small Hat', 950, 'assets/images/product/m.jpg')">
+      Add to Cart
+    </button>
+
+    <!-- Checkout button -->
+    <button onclick="goToCheckout()">
+      Checkout
+    </button>
+  </div>
+
+  <!-- Link to script.js -->
+  <script src="script.js"></script>
+
+  <!-- Inline script for checkout redirect -->
+  <script>
+    function goToCheckout() {
+      window.location.href = "checkout.html";
+    }
+  </script>
+</body>
+</html>
+

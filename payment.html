@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    header { margin-bottom: 20px; }
+    .order-summary { border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+    .order-summary h2 { margin-top: 0; }
+    .order-item { margin-bottom: 10px; }
+    .thank-you { margin-top: 20px; font-size: 18px; font-weight: bold; color: green; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Order Confirmation</h1>
+</header>
+
+<div class="order-summary" id="order-summary">
+  <h2>Your Order</h2>
+</div>
+
+
+<p class="thank-you">Thank you for your purchase, Roselyn! 🎉</p>
+<a href="products.html">← Back to Shop</a>
+
+<script>
+function renderOrder() {
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const summary = document.getElementById("order-summary");
+
+  if (orders.length === 0) {
+    summary.innerHTML += "<p>No order found.</p>";
+    return;
+  }
+
+  // kunin ang pinakahuling order
+  const lastOrder = orders[orders.length - 1];
+  let total = 0;
+  let itemsHTML = "";
+
+  lastOrder.cart.forEach(item => {
+    const subtotal = item.price * item.qty;
+    total += subtotal;
+    itemsHTML += `<div>${item.name} (x${item.qty}) - ₱${subtotal}</div>`;
+  });
+
+  summary.innerHTML += `
+    ${itemsHTML}
+    <p><strong>Total Price:</strong> ₱${total}</p>
+  `;
+}
+renderOrder();
+</script>
+</body>
+</html>
+
+
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+signInWithPopup(auth, provider)
+  .then(result => {
+    // Kapag successful login, redirect to home.html
+    window.location.href = "home.html";
+  })
+  .catch(error => {
+    alert("Login error: " + error.message);
+  });

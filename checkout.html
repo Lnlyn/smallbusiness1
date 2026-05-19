@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout Page</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      margin-right: 15px;
+      border-radius: 5px;
+    }
+    .cart-summary {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .clear-btn {
+      background: red;
+      color: white;
+      border: none;
+    }
+    .checkout-btn {
+      background: green;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Checkout Page</h1>
+</header>
+
+<div id="cart-items"></div>
+<div id="cart-summary"></div>
+
+
+<script>
+  
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const container = document.getElementById("cart-items");
+  const summary = document.getElementById("cart-summary");
+  container.innerHTML = "";
+
+  let total = 0;
+  let totalItems = 0;
+
+  cart.forEach((item, index) => {
+    const subtotal = item.price * item.qty;
+    total += subtotal;
+    totalItems += item.qty;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.image}" alt="${item.name}">
+        <div>
+          <strong>${item.name}</strong><br>
+          Price: ₱${item.price}<br>
+          Subtotal: ₱${subtotal}
+        </div>
+        <div>
+          <button onclick="updateQty(${index}, -1)">-</button>
+          <span>${item.qty}</span>
+          <button onclick="updateQty(${index}, 1)">+</button>
+        </div>
+      </div>
+    `;
+  });
+
+  summary.innerHTML = `
+    <p>Total Items: ${totalItems}</p>
+    <p>Total Price: ₱${total}</p>
+    <button onclick="clearCart()" class="clear-btn">Clear Cart</button>
+    <button onclick="proceedCheckout()" class="checkout-btn">Proceed to Checkout</button>
+  `;
+}
+
+function proceedCheckout() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  // idagdag ang bagong order
+  orders.push({
+    customer: "Roselyn", // pwede mo palitan kung may login system
+    cart: cart,
+    date: new Date().toLocaleString()
+  });
+
+  localStorage.setItem("orders", JSON.stringify(orders));
+  localStorage.removeItem("cart"); // optional: clear cart
+  window.location.href = "payment.html";
+}
+
+renderCart();
+</script>
+
+</body>
+</html>
+

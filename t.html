@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Banig Mat (New) - PandanCraft</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>PandanCraft</h1>
+    <div class="top-icons">
+      <a href="home.html">🏠</a>
+      <a href="cart.html">🛒</a>
+      <a href="#">👤</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="index.html">Logout</a>
+  </nav>
+
+  <div class="product-detail">
+    <img src="assets/images/product/t.jpg" alt="Pandan Wallet">
+    <h2>Pandan Wallet</h2>
+    <p>Handwoven pandan mat, durable and eco-friendly for home use.</p>
+    <span>₱420</span>
+
+    <!-- Add to Cart button -->
+    <button onclick="addToCart('Pandan Wallet', 420, 'assets/images/product/t.jpg')">
+      Add to Cart
+    </button>
+
+    <!-- Checkout button -->
+    <button onclick="goToCheckout()">
+      Checkout
+    </button>
+  </div>
+
+  <!-- Link to script.js -->
+  <script src="script.js"></script>
+
+  <!-- Inline script for checkout redirect -->
+  <script>
+    function goToCheckout() {
+      window.location.href = "checkout.html";
+    }
+  </script>
+</body>
+</html>
+
